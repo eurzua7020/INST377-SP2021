@@ -20,7 +20,8 @@ body {
 /* || typography */
 
 h1, h2, h3 {
-  font-family: 'Abril Fatface', cursive;
+  /*font-family: 'Abril Fatface', cursive;*/
+  font-family: 'Nunito', sans-serif;
   color: #2a2a2a;
 }
 
