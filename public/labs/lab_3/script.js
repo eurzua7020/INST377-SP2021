@@ -1,5 +1,5 @@
 /* Put your javascript in here */
-    /* label the images, just for convenience, to visually track them */
+/* label the images, just for convenience, to visually track them */
     let i = 1;
     for(let li of carousel.querySelectorAll('li')) {
       li.style.position = 'relative';
@@ -30,4 +30,4 @@
       // can only shift the ribbbon for (total ribbon length - visible count) images
       position = Math.max(position, -width * (listElems.length - count));
       list.style.marginLeft = position + 'px';
-    };
+    }
