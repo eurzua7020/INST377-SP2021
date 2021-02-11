@@ -6,6 +6,9 @@
       li.insertAdjacentHTML('beforeend', `<span style="position:absolute;left:0;top:0">${i}</span>`);
       i++;
     }
+    function rotatePictures() {
+      const fotos = document.querySelectorAll
+    }
 
     /* configuration */
     let width = 130; // image width
