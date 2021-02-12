@@ -5,77 +5,76 @@ body{
     background-image: url("images/japan.png");
     background-repeat: repeat;
     padding: 10px;
+    background-color: steelblue;
 }
-  
 .carousel {
-    position: fixed;
-    width: 398px;
-    padding: 10px 40px;
-    border: 1px solid #CCC;
-    border-radius: 15px;
-    background: #eee;
-    top: 50%;
-    left: 50%;
-    /*margin-top: -70px;
-    margin-left: -250px */
-    transform: translate(-50%, -50%)
-  }
-  
+  position: fixed;
+  width: 150px;
+  padding: 10px 40px;
+  border: 1px solid #CCC;
+  border-radius: 15px;
+  background: #eee;
+  top: 50%;
+  left: 50%;
+  /*margin-top: -70px;
+  margin-left: -250px */
+  transform: translate(-50%, -50%)
+}
+
 .carousel img {
-    width: 130px;
-    height: 130px;
-    /* make it block to remove space around images */
-    display: block;
-    margin: auto;
-  }
-  
+  width: 130px;
+  height: 130px;
+  /* make it block to remove space around images */
+  display: block;
+}
+
 .arrow {
-    position: absolute;
-    top: 60px;
-    padding: 0;
-    background: #ddd;
-    border-radius: 15px;
-    border: 1px solid gray;
-    font-size: 24px;
-    line-height: 24px;
-    color: #444;
-    display: block;
-  }
-  
+  position: absolute;
+  top: 60px;
+  padding: 0;
+  background: #ddd;
+  border-radius: 15px;
+  border: 1px solid gray;
+  font-size: 24px;
+  line-height: 24px;
+  color: #444;
+  display: block;
+}
+
 .arrow:focus {
-    outline: none;
-  }
-  
+  outline: none;
+}
+
 .arrow:hover {
-    background: #ccc;
-    cursor: pointer;
-  }
-  
+  background: #ccc;
+  cursor: pointer;
+}
+
 .prev {
-    left: 7px;
-  }
-  
+  left: 7px;
+}
+
 .next {
-    right: 7px;
-  }
-  
+  right: 7px;
+}
+
 .gallery {
-    width: 390px;
-    overflow: hidden;
-  }
-  
+  width: 135px;
+  overflow: hidden;
+}
+
 .gallery ul {
-    height: 130px;
-    width: 9999px;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    transition: margin-left 250ms;
-    /* remove white-space between inline-block'ed li */
-    /* http://davidwalsh.name/remove-whitespace-inline-block */
-    font-size: 0;
-  }
-  
+  height: 130px;
+  width: 9999px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  transition: margin-left 250ms;
+  /* remove white-space between inline-block'ed li */
+  /* http://davidwalsh.name/remove-whitespace-inline-block */
+  font-size: 0;
+}
+
 .gallery li {
-    display: inline-block;
-  }
+  display: inline-block;
+}
