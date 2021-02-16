@@ -154,5 +154,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     // attach to button
    start()
+   function nothin ()
+   
 
 })
