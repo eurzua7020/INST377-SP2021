@@ -5,7 +5,11 @@ describe('Lab 2', () => {
 
   it('Successfully loads with valid HTML', () => {
     cy.fixture('test_values').then((json) => {
+<<<<<<< HEAD
       labUrl = `${json.test_context || ''}/labs/lab_2/`;
+=======
+      labUrl = `${json.test_context || ''}labs/lab_2/`;
+>>>>>>> e1795a97299d7518d5f76cc741f7713691f9a58f
       cy.visit(labUrl); // change URL to match your dev URL
       cy.htmlvalidate();
     });
