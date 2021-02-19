@@ -1,0 +1,93 @@
+h1 {
+    text-align: center;
+}
+body {
+    font: normal 18px/1.5 "Fira Sans", "Helvetica Neue",
+    sans-serif;
+    background: #65a7f3;
+    color: rgb(43, 43, 43);
+    padding: 50px 0;
+}
+
+.container {
+width: 80%;
+max-width: 1600px;
+margin: 0 auto;
+}
+
+.container *{
+    box-sizing: border-box;
+}
+
+.flex-outer, .flex-inner {
+    list-style-type: none;
+    padding: 0;
+}
+
+.flex-outer {
+    max-width: 1000px;
+    margin: 0;
+}
+
+.flex-outer li, .flex-inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.age{
+    margin-left: -50px;
+}
+
+.flex-inner {
+    padding: 0 200px;
+    justify-content:space-between;
+    
+}
+
+.flex-outer > li:not(:last-child) {
+    margin-bottom: 20px;
+    margin-left: -100px;
+}
+
+.flex-outer li label, .flex-outer li p {
+    padding: 8px;
+    font-weight: bold;
+    letter-spacing: 0.09em;
+    /*text-transform: uppercase;*/
+}
+
+.flex-outer > li > label, .flex-out li p {
+    flex: 1 0 120px;
+    max-width: 220px;
+}
+
+.flex-outer > li > label +*, .flex-inner {
+    flex: 1 0 220px;
+}
+
+.flex-outer li p {
+    margin: 0;
+}
+
+.flex-outer li input:not([type="checkbox"]),
+.flex-outer li textarea {
+    padding: 15px;
+    border: none;
+}
+
+.flex-outer li button {
+    margin-left: -100px;
+    padding: 8px 16px;
+    border: none;
+    background: rgb(206, 200, 200);
+    color: #070606;
+    text-transform: uppercase;
+    letter-spacing: 0.09em;
+    border-radius: 2px;
+    font-weight: bold;
+}
+
+.flex-inner li {
+    width: 100px;
+}
