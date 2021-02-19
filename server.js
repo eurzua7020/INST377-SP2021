@@ -43,7 +43,9 @@ app.route('/api')
     console.log('POST request detected');
     console.log('Form data in res.body', req.body);
     console.log('Now send something back to your client');
-    // res.json({data: dataToSendToFrontEnd});
+    res.send('Hello World');
+    res.json({message: "Hello World"})
+    /*res.json({data: dataToSendToFrontEnd});*/
   });
 
 app.listen(port, async () => {
