@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
         doodler.style.bottom = doodlerBottomSpace + 'px'
     }
 
-    class Platform{
+    class Platform {
         constructor(newPlatBottom){
             this.bottom = newPlatBottom
             this.left = Math.random() * 315
@@ -76,8 +76,9 @@ document.addEventListener('DOMContentLoaded', () => {
         upTimerId = setInterval(function(){
             doodlerBottomSpace += 20
             doodler.style.bottom = doodlerBottomSpace + 'px'
-            if (doodlerBottomSpace > startPoint + 200){
+            if (doodlerBottomSpace > (startPoint + 200)){
                 fall() 
+                isJumping = false
             }
         },30)
     }
@@ -94,7 +95,7 @@ document.addEventListener('DOMContentLoaded', () => {
             platforms.forEach(platform => {
                 if(
                     (doodlerBottomSpace >= platform.bottom) &&
-                    (doodlerBottomSpace <= platform.bottom) &&
+                    (doodlerBottomSpace <= (platform.bottom + 15)) &&
                     ((doodlerLeftSpace + 60) >= platform.left) &&
                     (doodlerLeftSpace <= (platform.left +85)) &&
                     !isJumping
@@ -102,10 +103,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     console.log('landed')
                     startPoint = doodlerBottomSpace
                     jump()
+                    isJumping = true
                 }
             })
 
-        },30)
+        },20)
     }
 
     function gameOver(){
@@ -152,7 +154,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         isGoingRight = true
         righTimerId = setInterval(function(){
-            if (doodlerLeftSpace <= 340){
+            if (doodlerLeftSpace <= 313){
                 doodlerLeftSpace += 5
                 doodler.style.left = doodlerLeftSpace + 'px'
             } else moveLeft()
@@ -171,7 +173,7 @@ document.addEventListener('DOMContentLoaded', () => {
             createPlatforms()
             createDoodler()
             setInterval(movePlatforms,30)
-            jump()
+            jump(startPoint)
             document.addEventListener('keyup', control)
         }
     }
