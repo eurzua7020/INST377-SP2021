@@ -57,7 +57,7 @@ liveReloadServer.server.once('connection', () => {
     liveReloadServer.refresh('/');
   }, 100);
 });
-
+/*
 const ormSql = new Sequelize({
   username: 'student',
   password: 'INST377@UMD',
@@ -67,5 +67,4 @@ const ormSql = new Sequelize({
   ss1: 'Amazon RDS',
   pool: { maxConnections: 5, maxIdleTime: 30},
   language: 'en'
-
-});
+});*/
