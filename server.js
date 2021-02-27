@@ -57,7 +57,7 @@ liveReloadServer.server.once('connection', () => {
     liveReloadServer.refresh('/');
   }, 100);
 });
-
+/*
 import {
   Sequelize
 }from "sequelize";
@@ -79,7 +79,7 @@ ormSql
 })
 .catch(err =>{
   console.error('Unable to connect to the databse:', err);
-});
+});*/
 
 
 
