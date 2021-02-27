@@ -1,3 +1,4 @@
+  
 // These are our required libraries to make the server work.
 /* eslint-disable no-console */
 /* eslint-disable no-unused-vars */
@@ -7,6 +8,7 @@ import dotenv from 'dotenv';
 import fetch from 'node-fetch';
 import reload from 'livereload';
 import connectReload from 'connect-livereload';
+
 
 dotenv.config();
 
@@ -43,9 +45,7 @@ app.route('/api')
     console.log('POST request detected');
     console.log('Form data in res.body', req.body);
     console.log('Now send something back to your client');
-    res.send('hello world');
-    res.json({message: "hello world"})
-    /*res.json({data: dataToSendToFrontEnd});*/
+    // res.json({data: dataToSendToFrontEnd});
   });
 
 app.listen(port, async () => {
@@ -57,14 +57,29 @@ liveReloadServer.server.once('connection', () => {
     liveReloadServer.refresh('/');
   }, 100);
 });
-/*
+
+import {
+  Sequelize
+}from "sequelize";
+
 const ormSql = new Sequelize({
   username: 'student',
   password: 'INST377@UMD',
   host: '3.236.243.212',
-  database: 'maui_hotels',
+  database: 'Maui_hotels',
   dialect: 'mysql',
-  ss1: 'Amazon RDS',
+  ssl: 'Amazon RDS',
   pool: { maxConnections: 5, maxIdleTime: 30},
   language: 'en'
-});*/
+});
+ormSql
+.authenticate()
+.then(() => {
+  console.log('Connection has been established sucessfully.');
+})
+.catch(err =>{
+  console.error('Unable to connect to the databse:', err);
+});
+
+
+
