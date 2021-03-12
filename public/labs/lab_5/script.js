@@ -1,6 +1,6 @@
-/*function mapInit() {
-  // follow the Leaflet Getting Started tutorial here
-  const mymap = L.map('mapid').setView([51.505, -0.09], 13);
+function mapInit(){
+  //follow the Leaflet Getting Started tutorial here
+  const mymap = L.map('mapid').setView([38.9897, -76.9378], 13);
 
   L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
@@ -8,95 +8,46 @@
     id: 'mapbox/streets-v11',
     tileSize: 512,
     zoomOffset: -1,
-    accessToken: 'your.mapbox.access.token'
+    accessToken: 'pk.eyJ1IjoiZXVyenVhIiwiYSI6ImNrbTZuNWVtbTBxNG4yb281ejFwbmlwMGoifQ.fVeYUIJ-N3W5yEgcphjsxg'
 }).addTo(mymap);
-
-  const marker = L.marker([51.5, -0.09]).addTo(mymap);
-  const circle = L.circle([51.508, -0.11], {
-    color: 'red',
-    fillColor: '#f03',
-    fillOpacity: 0.5,
-    radius: 500
-}).addTo(mymap);
-
-const polygon = L.polygon([
-  [51.509, -0.08],
-  [51.503, -0.06],
-  [51.51, -0.047]
-]).addTo(mymap);
-
-marker.bindPopup("<b>Hello world!</b><br>I am a popup.").openPopup();
-circle.bindPopup("I am a circle.");
-polygon.bindPopup("I am a polygon.");
-
-const popup = L.popup()
-.setLatLng([51.5, -0.09])
-.setContent("I am a standalone popup.")
-.openOn(mymap);
-
-function onMapClick(e) {
-    popup
-        .setLatLng(e.latlng)
-        .setContent("You clicked the map at " + e.latlng.toString())
-        .openOn(mymap);
+console.log('mymap', mymap);
+  return mymap;
 }
 
-mymap.on('click', onMapClick);
-  return map;
-}
-*/
-async function dataHandler(mapObjectFromFunction) {
-  // use your assignment 1 data handling code here
+async function dataHandler(mapFromLeaflet){
+  //use your assignment 1 data handling code here
   // and target mapObjectFromFunction to attach markers
-  sync function getData() {
-    const response = await fetch('/api');
-    const data = await response.json();
-    return data
-  }
-  const resturants = []; 
-  getData().then(data => resturants.push(...data));
-  
-  function findMatches(matchWord, resturants) {
-    return resturants.filter(resturant => {
-        const regex = new RegExp(matchWord, 'gi');
-        return resturant.zip.match(regex);
+  const form = document.querySelector('#search-form');
+  const search = document.querySelector('#search');
+  const targetList = document.querySelector('.target-list');
+
+  const request = await fetch('/api');
+  const data = await request.json();
+
+  form.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    console.log('form submitted');
+    const filtered = data.filter((record) => record.zip.includes(search.value) && record.geocoded_column_1);
+    console.table(filtered);
+
+    filtered.forEach((item) =>{
+      const longLat = item.geocoded_column_1.coordinates;
+      console.log('markerLongLat', longLat[0], longLat[1]);
+      const marker = L.marker([longLat[1], longLat[0]]).addTo(mapFromLeaflet);
+
+      const appendItem = document.createElement('li');
+      appendItem.classList.add('block');
+      appendItem.classList.add('list-item');
+      appendItem.innerHTML = `<div class="list-header is-size-5">${item.name}</div><address class="is-size-6">${item.address_line_1}</address>`;
+      targetList.append(appendItem);
     });
-  }
-  
-  function displayMatches() {
-    const matchArray = findMatches(this.value, resturants)
-    const html = matchArray.map(resturant => {
-        return `
-        <div class="block">
-        <ul>
-        <li class="results">
-            <span class="name"> ${resturant.name} </span><br />
-            <span class="category"> ${resturant.category} </span> <br /> 
-        <address class="alpha">
-            <span class="address"> ${resturant.address_line_1} </span> <br />
-            <span class="city"> ${resturant.city}</span> <br />
-            <span class="zip">${resturant.zip}</span> 
-        </address>
-        </li>
-        </ul>
-        </div>
-        `;
-    }).join('');
-    suggestions.innerHTML = html;
-  }
-  
-  const searchInput = document.querySelector('.search')
-  const suggestions = document.querySelector('.suggestions')
-  
-  searchInput.addEventListener('change', displayMatches)
-  searchInput.addEventListener('keyup', displayMatches)
+  });
 }
 
-async function windowActions() {
+async function windowActions(){
   const map = mapInit();
   await dataHandler(map);
 }
 
 window.onload = windowActions;
-
 
