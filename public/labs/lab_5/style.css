@@ -4,18 +4,29 @@ body{
     max-width:650px; */
     line-height: 1.5;
     font-size: 18px;
-    color: #444;
+    color: rgb(51, 49, 49);
     padding: 0 10px;
+    margin-bottom: 1.5rem;
+}
+.searches{
+    margin-bottom: 1.5rem;
 }
 
 h1,
 h2,
 h3{
     line-height: 1.2;
+    margin-bottom: 0.25rem;
+    font-weight: bold;
+}
+h3{
+    font-size: 0.5em;
+    font-weight: lighter;
 }
 
 #mapid {
     height: 480px;
+    margin-bottom: 1.5rem;
 }
 
 .list-header{
@@ -26,7 +37,7 @@ h3{
 .list-item{
     border-radius: 4px;
     color: rgba(25, 25, 25, 90);
-    background: #00d1b2;
+    background: #ff80ce;
     padding: 5px;
 }
 
